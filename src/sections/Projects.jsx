@@ -1,145 +1,369 @@
 import { ArrowUpRight, Github } from "lucide-react";
-import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
+
 const projects = [
   {
-    title: "Fintech Dashboard",
+    title: "TechBairn Website",
+
     description:
-      "A comprehensive financial analytics platform with real-time data visualization, portfolio management, and AI-powered insights.",
-    image: "/projects/project1.png",
-    tags: ["React", "Typescript", "NodeJS"],
-    link: "#",
-    github: "#",
+      "A responsive educational platform for technical training and learning resources, with authentication, course management, payments, and AWS deployment.",
+
+    image: "/projects/techbairn.png",
+
+    tags: [
+      "React.js",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "AWS",
+      "Razorpay",
+    ],
+
+    category: "Full-Stack Development",
+
+    link: "https://techbairn.com",
+    github: "https://github.com/whateverhappenshappens/tbrFrontend",
   },
+
   {
-    title: "E-Commerce Platform",
+    title: "MyFinance-AI",
+
     description:
-      "A full-featured e-commerce solution with inventory management, payment processing, and analytics dashboard.",
-    image: "/projects/project2.png",
-    tags: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
-    link: "#",
-    github: "#",
+      "An AI-powered personal finance platform that helps users track income and expenses, scan receipts using OCR, automatically categorize transactions, and understand their spending through interactive analytics.",
+
+    image: "/projects/finora_02.png",
+
+    tags: [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Gemini API",
+    ],
+
+    category: "AI + FinTech",
+
+    link: "https://jocular-madeleine-de937f.netlify.app/",
+    github: "https://github.com/Himanshu8876/finance-AI",
   },
+
   {
-    title: "AI Writing Assistant",
+    title: "Operate",
+
     description:
-      "An intelligent writing tool powered by GPT-4, helping users create better content faster.",
-    image: "/projects/project3.png",
-    tags: ["React", "OpenAI", "Python", "FastAPI"],
-    link: "#",
-    github: "#",
+      "A real-time leveraged trading platform built for financial markets, supporting live market interactions, trading workflows, referral systems, and scalable cloud infrastructure.",
+
+    image: "/projects/operate.png",
+
+    tags: [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "AWS",
+      "Lambda",
+      "WebSockets",
+    ],
+
+    category: "Trading Platform",
+
+    
+    github: "https://github.com/Udaylev/oprate-demo-v01",
   },
+
   {
-    title: "Project Management Tool",
+    title: "Banking Transaction System",
+
     description:
-      "A collaborative workspace for teams with real-time updates, task tracking, and integrations.",
-    image: "/projects/project4.png",
-    tags: ["Next.js", "Socket.io", "MongoDB", "Redis"],
-    link: "#",
-    github: "#",
+      "A backend-focused banking transaction system designed around secure fund transfers, wallet management, transaction validation, unique transaction tracking, and ledger-based accounting logic.",
+
+    image: "/projects/banking-transaction.png",
+
+    tags: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "REST API",
+      "Ledger",
+      "Transactions",
+    ],
+
+    category: "Backend Engineering",
+
+    
+    github: "https://github.com/Himanshu8876/Bank-transaction",
   },
 ];
 
 export const Projects = () => {
   return (
-    <section id="projects" className="py-32 relative overflow-hidden">
-      {/* Bg glows */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
+    <section
+      id="projects"
+      className="py-32 relative overflow-hidden"
+    >
+
+      {/* Background */}
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+
+
       <div className="container mx-auto px-6 relative z-10">
+
         {/* Section Header */}
-        <div className="text-center mx-auto max-w-3xl mb-16">
+        <div className="max-w-3xl mb-16">
+
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
             Featured Work
           </span>
+
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            Projects that
+            Things I've
             <span className="font-serif italic font-normal text-white">
-              {" "}
-              make an impact.
+              {" "}built.
             </span>
           </h2>
-          <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            A selection of my recent work, from complex web applications to
-            innovative tools that solve real-world problems.
+
+          <p className="text-muted-foreground leading-relaxed animate-fade-in animation-delay-200">
+            A selection of projects I've worked on across full-stack
+            development, artificial intelligence, financial technology,
+            trading systems, and backend engineering.
           </p>
+
         </div>
+
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
+
           {projects.map((project, idx) => (
-            <div
-              key={idx}
-              className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
-              style={{ animationDelay: `${(idx + 1) * 100}ms` }}
+
+            <article
+              key={project.title}
+              className="
+                group
+                glass
+                rounded-2xl
+                overflow-hidden
+                animate-fade-in
+                border border-border/40
+                hover:border-primary/30
+                transition-all
+                duration-500
+              "
+              style={{
+                animationDelay: `${(idx + 1) * 100}ms`,
+              }}
             >
+
               {/* Image */}
-              <div className="relative overflow-hidden aspect-video">
+              <div className="relative overflow-hidden aspect-video bg-surface">
+
                 <img
                   src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  alt={`${project.title} project`}
+                  className="
+                    w-full
+                    h-full
+                    object-cover
+                    transition-transform
+                    duration-700
+                    group-hover:scale-105
+                  "
                 />
+
+                {/* Dark overlay */}
                 <div
-                  className="absolute inset-0 
-                bg-gradient-to-t from-card via-card/50
-                 to-transparent opacity-60"
+                  className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-black/70
+                    via-black/10
+                    to-transparent
+                    opacity-70
+                  "
                 />
-                {/* Overlay Links */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+
+                {/* Category */}
+                <div className="absolute top-5 left-5">
+
+                  <span
+                    className="
+                      px-3
+                      py-1.5
+                      rounded-full
+                      bg-black/50
+                      backdrop-blur-md
+                      border
+                      border-white/10
+                      text-xs
+                      text-white/80
+                    "
+                  >
+                    {project.category}
+                  </span>
+
+                </div>
+
+
+                {/* Hover Links */}
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    flex
+                    items-center
+                    justify-center
+                    gap-4
+                    opacity-0
+                    group-hover:opacity-100
+                    transition-opacity
+                    duration-300
+                  "
+                >
+
                   <a
                     href={project.link}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                    target={project.link !== "#" ? "_blank" : undefined}
+                    rel={
+                      project.link !== "#"
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="
+                      p-3
+                      rounded-full
+                      glass
+                      hover:bg-primary
+                      hover:text-primary-foreground
+                      transition-all
+                    "
+                    aria-label={`View ${project.title}`}
                   >
                     <ArrowUpRight className="w-5 h-5" />
                   </a>
+
+
                   <a
                     href={project.github}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                    target={project.github !== "#" ? "_blank" : undefined}
+                    rel={
+                      project.github !== "#"
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="
+                      p-3
+                      rounded-full
+                      glass
+                      hover:bg-primary
+                      hover:text-primary-foreground
+                      transition-all
+                    "
+                    aria-label={`${project.title} GitHub repository`}
                   >
                     <Github className="w-5 h-5" />
                   </a>
+
                 </div>
+
               </div>
 
+
               {/* Content */}
-              <div className="p-6 space-y-4">
-                <div className="flex items-start justify-between">
-                  <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
+              <div className="p-6 space-y-5">
+
+                {/* Title */}
+                <div className="flex items-start justify-between gap-4">
+
+                  <div>
+
+                    <p className="text-xs uppercase tracking-wider text-primary mb-2">
+                      {project.category}
+                    </p>
+
+                    <h3
+                      className="
+                        text-xl
+                        font-semibold
+                        group-hover:text-primary
+                        transition-colors
+                      "
+                    >
+                      {project.title}
+                    </h3>
+
+                  </div>
+
                   <ArrowUpRight
-                    className="w-5 h-5 
-                  text-muted-foreground group-hover:text-primary
-                   group-hover:translate-x-1 
-                   group-hover:-translate-y-1 transition-all"
+                    className="
+                      w-5
+                      h-5
+                      flex-shrink-0
+                      text-muted-foreground
+                      group-hover:text-primary
+                      group-hover:translate-x-1
+                      group-hover:-translate-y-1
+                      transition-all
+                    "
                   />
+
                 </div>
-                <p className="text-muted-foreground text-sm">
+
+
+                {/* Description */}
+                <p
+                  className="
+                    text-muted-foreground
+                    text-sm
+                    leading-relaxed
+                  "
+                >
                   {project.description}
                 </p>
+
+
+                {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIdx) => (
+
+                  {project.tags.map((tag) => (
+
                     <span
-                      key={tagIdx}
-                      className="px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300"
+                      key={tag}
+                      className="
+                        px-3
+                        py-1.5
+                        rounded-full
+                        bg-surface
+                        text-xs
+                        font-medium
+                        border
+                        border-border/50
+                        text-muted-foreground
+                        hover:border-primary/50
+                        hover:text-primary
+                        transition-all
+                        duration-300
+                      "
                     >
                       {tag}
                     </span>
+
                   ))}
+
                 </div>
+
               </div>
-            </div>
+
+            </article>
+
           ))}
+
         </div>
 
-        {/* View All CTA */}
-        <div className="text-center mt-12 animate-fade-in animation-delay-500">
-          <AnimatedBorderButton>
-            View All Projects
-            <ArrowUpRight className="w-5 h-5" />
-          </AnimatedBorderButton>
-        </div>
       </div>
+
     </section>
   );
 };

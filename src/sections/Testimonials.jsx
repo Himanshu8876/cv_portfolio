@@ -1,38 +1,40 @@
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import {
+  Award,
+  ExternalLink,
+  FileText,
+  Trophy,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { useState } from "react";
 
-const testimonials = [
+const achievements = [
   {
-    quote:
-      "Pedro is one of the most talented engineers I've worked with. His attention to detail and ability to translate complex requirements into elegant solutions is remarkable.",
-    author: "Sarah Chen",
-    role: "CTO, Tech Innovators Inc.",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+    title: "AWS Certified Cloud Practitioner",
+    type: "Certification",
+    description:
+      "Earned the AWS Certified Cloud Practitioner certification, demonstrating foundational knowledge of AWS cloud concepts, services, security, and cloud architecture.",
+    icon: Award,
+    link: "https://drive.google.com/file/d/17Kx4eclW_3LHv0zNoFd0smSLpAFikfuw/view",
+    buttonText: "View Certificate",
   },
   {
-    quote:
-      "Working with Pedro was a game-changer for our project. He delivered ahead of schedule with code quality that set a new standard for our team.",
-    author: "Michael Rodriguez",
-    role: "Product Manager, Digital Solutions",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+    title: "Letter of Recommendation",
+    type: "Recognition",
+    description:
+      "Received a Letter of Recommendation from Techbairn for my contributions during my Software Developer Internship, including full-stack development, deployment, and technical contributions.",
+    icon: FileText,
+    link: "https://drive.google.com/file/d/18ftvC-jHsdEUpMjgbSKuzLLPoJqy8rCg/view",
+    buttonText: "View Recommendation",
   },
   {
-    quote:
-      "Pedro's expertise in React and TypeScript helped us rebuild our entire frontend in record time. His architectural decisions continue to pay dividends.",
-    author: "Emily Watson",
-    role: "Engineering Lead, StartUp Labs",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
-  },
-  {
-    quote:
-      "Not only is Pedro technically brilliant, but he's also a fantastic communicator and team player. He elevated everyone around him.",
-    author: "David Kim",
-    role: "CEO, Innovation Hub",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+    title: "Bolt 2.0 Hackathon Finalist",
+    type: "Achievement",
+    description:
+      "Reached the Top 10 among 150+ participating teams at the Bolt 2.0 Hackathon.",
+    icon: Trophy,
+    link: "https://drive.google.com/file/d/1cKUAPK_s_1N30nTUqfXUnVXZiDNSO6-m/view",
+    buttonText: "View Achievement",
   },
 ];
 
@@ -40,109 +42,298 @@ export const Testimonials = () => {
   const [activeIdx, setActiveIdx] = useState(0);
 
   const next = () => {
-    setActiveIdx((prev) => (prev + 1) % testimonials.length);
+    setActiveIdx(
+      (prev) => (prev + 1) % achievements.length
+    );
   };
 
   const previous = () => {
     setActiveIdx(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+      (prev) =>
+        (prev - 1 + achievements.length) %
+        achievements.length
     );
   };
+
+  const achievement = achievements[activeIdx];
+  const Icon = achievement.icon;
+
   return (
-    <section id="testimonials" className="py-32 relative overflow-hidden">
+    <section
+      id="achievements"
+      className="py-32 relative overflow-hidden"
+    >
+      {/* Background Glow */}
       <div
-        className="absolute top-1/2 left-1/2
-       w-[800px] h-[800px] bg-primary/5
-        rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
+        className="
+          absolute
+          top-1/2
+          left-1/2
+          w-[800px]
+          h-[800px]
+          bg-primary/5
+          rounded-full
+          blur-3xl
+          -translate-x-1/2
+          -translate-y-1/2
+          pointer-events-none
+        "
       />
+
       <div
-        className="container mx-auto 
-      px-6 relative z-10"
+        className="
+          container
+          mx-auto
+          px-6
+          relative
+          z-10
+        "
       >
         {/* Section Header */}
         <div
-          className="text-center max-w-3xl 
-        mx-auto mb-16"
+          className="
+            text-center
+            max-w-3xl
+            mx-auto
+            mb-16
+          "
         >
           <span
-            className="text-secondary-foreground 
-          text-sm font-medium tracking-wider 
-          uppercase animate-fade-in"
+            className="
+              text-secondary-foreground
+              text-sm
+              font-medium
+              tracking-wider
+              uppercase
+              animate-fade-in
+            "
           >
-            What People Say
+            Achievements
           </span>
+
           <h2
-            className="text-4xl md:text-5xl 
-          font-bold mt-4 mb-6 animate-fade-in 
-          animation-delay-100 text-secondary-foreground"
+            className="
+              text-4xl
+              md:text-5xl
+              font-bold
+              mt-4
+              mb-6
+              animate-fade-in
+              animation-delay-100
+              text-secondary-foreground
+            "
           >
-            Kind words from{" "}
+            Milestones I'm{" "}
             <span
-              className="font-serif italic 
-            font-normal text-white"
+              className="
+                font-serif
+                italic
+                font-normal
+                text-white
+              "
             >
-              amazing people.
+              proud of.
             </span>
           </h2>
+
+          <p
+            className="
+              text-muted-foreground
+              animate-fade-in
+              animation-delay-200
+            "
+          >
+            Certifications, recognition, and achievements
+            from my academic and professional journey.
+          </p>
         </div>
 
-        {/* Testimonial Carousel */}
+        {/* Achievement Carousel */}
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            {/* Main Testimonial */}
-            <div className="glass p-8 rounded-3xl md:p-12 glow-border animate-fade-in animation-delay-200">
-              <div className="absolute -top-4 left-8 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                <Quote className="w-6 h-6 text-primary-foreground" />
-              </div>
 
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8 pt-4">
-                "{testimonials[activeIdx].quote}"
-              </blockquote>
-
-              <div className="flex items-center gap-4">
-                <img
-                  src={testimonials[activeIdx].avatar}
-                  alt={testimonials[activeIdx].author}
-                  className="w-14 h-14 rounded-full object-cover ring-2 ring-primary/20"
+            {/* Main Achievement Card */}
+            <div
+              key={activeIdx}
+              className="
+                relative
+                glass
+                p-8
+                md:p-12
+                rounded-3xl
+                glow-border
+                animate-fade-in
+                animation-delay-200
+              "
+            >
+              {/* Icon */}
+              <div
+                className="
+                  w-16
+                  h-16
+                  rounded-2xl
+                  bg-primary/10
+                  flex
+                  items-center
+                  justify-center
+                  mb-8
+                "
+              >
+                <Icon
+                  className="
+                    w-8
+                    h-8
+                    text-primary
+                  "
                 />
-                <div>
-                  <div className="font-semibold">
-                    {testimonials[activeIdx].author}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {testimonials[activeIdx].role}
-                  </div>
-                </div>
               </div>
+
+              {/* Achievement Type */}
+              <span
+                className="
+                  text-xs
+                  uppercase
+                  tracking-wider
+                  text-primary
+                  font-medium
+                "
+              >
+                {achievement.type}
+              </span>
+
+              {/* Title */}
+              <h3
+                className="
+                  text-2xl
+                  md:text-3xl
+                  font-semibold
+                  mt-3
+                  mb-5
+                "
+              >
+                {achievement.title}
+              </h3>
+
+              {/* Description */}
+              <p
+                className="
+                  text-muted-foreground
+                  leading-relaxed
+                  max-w-2xl
+                "
+              >
+                {achievement.description}
+              </p>
+
+              {/* View Document Button */}
+              <a
+                href={achievement.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  mt-8
+                  px-5
+                  py-2.5
+                  rounded-full
+                  bg-primary/10
+                  text-primary
+                  border
+                  border-primary/20
+                  hover:bg-primary
+                  hover:text-primary-foreground
+                  transition-all
+                  duration-300
+                  text-sm
+                  font-medium
+                "
+              >
+                {achievement.buttonText}
+
+                <ExternalLink
+                  className="w-4 h-4"
+                />
+              </a>
             </div>
 
-            {/* Testimonials Navigation */}
-            <div className="flex items-center justify-center gap-4 mt-8">
+            {/* Navigation */}
+            <div
+              className="
+                flex
+                items-center
+                justify-center
+                gap-5
+                mt-8
+              "
+            >
+              {/* Previous */}
               <button
-                className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
                 onClick={previous}
+                aria-label="Previous achievement"
+                className="
+                  p-3
+                  rounded-full
+                  glass
+                  hover:bg-primary/10
+                  hover:text-primary
+                  transition-all
+                "
               >
-                <ChevronLeft />
+                <ChevronLeft
+                  className="w-5 h-5"
+                />
               </button>
 
-              <div className="flex gap-2">
-                {testimonials.map((_, idx) => (
+              {/* Dots */}
+              <div
+                className="
+                  flex
+                  items-center
+                  gap-2
+                "
+              >
+                {achievements.map((_, idx) => (
                   <button
-                    onClick={() => setActiveIdx(idx)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      idx === activeIdx
-                        ? "w-8 bg-primary"
-                        : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                    key={idx}
+                    onClick={() =>
+                      setActiveIdx(idx)
+                    }
+                    aria-label={`Show achievement ${
+                      idx + 1
                     }`}
+                    className={`
+                      h-2
+                      rounded-full
+                      transition-all
+                      duration-300
+                      ${
+                        idx === activeIdx
+                          ? "w-8 bg-primary"
+                          : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                      }
+                    `}
                   />
                 ))}
               </div>
 
+              {/* Next */}
               <button
                 onClick={next}
-                className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
+                aria-label="Next achievement"
+                className="
+                  p-3
+                  rounded-full
+                  glass
+                  hover:bg-primary/10
+                  hover:text-primary
+                  transition-all
+                "
               >
-                <ChevronRight />
+                <ChevronRight
+                  className="w-5 h-5"
+                />
               </button>
             </div>
           </div>
