@@ -2,34 +2,35 @@ import { ArrowUpRight, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "TechBairn Website",
+    title: "Job Radar",
 
     description:
-      "A responsive educational platform for technical training and learning resources, with authentication, course management, payments, and AWS deployment.",
+      "A full-stack job discovery and matching platform that aggregates fresher opportunities, processes resumes with Gemini, matches jobs to user profiles, and delivers personalized job alerts.",
 
-    image: "/projects/techbairn.png",
+    image: "/projects/job.png",
 
     tags: [
-      "React.js",
-      "Tailwind CSS",
+      "TypeScript",
+      "React",
       "Node.js",
       "Express.js",
-      "MongoDB",
-      "AWS",
-      "Razorpay",
+      "PostgreSQL",
+      "Gemini API",
+      "JWT",
     ],
 
-    category: "Full-Stack Development",
+    category: "Full-Stack + AI",
 
-    link: "https://techbairn.com",
-    github: "https://github.com/whateverhappenshappens/tbrFrontend",
+    link: "https://jobraadar.netlify.app/",
+
+    github: "https://github.com/Himanshu8876/job-radar",
   },
 
   {
     title: "MyFinance-AI",
 
     description:
-      "An AI-powered personal finance platform that helps users track income and expenses, scan receipts using OCR, automatically categorize transactions, and understand their spending through interactive analytics.",
+      "An AI-powered personal finance platform that helps users track income and expenses, scan receipts using Gemini, automatically categorize transactions, and understand their spending through interactive analytics.",
 
     image: "/projects/finora_02.png",
 
@@ -45,6 +46,7 @@ const projects = [
     category: "AI + FinTech",
 
     link: "https://jocular-madeleine-de937f.netlify.app/",
+
     github: "https://github.com/Himanshu8876/finance-AI",
   },
 
@@ -67,31 +69,34 @@ const projects = [
 
     category: "Trading Platform",
 
-    
+    link: "#",
+
     github: "https://github.com/Udaylev/oprate-demo-v01",
   },
 
   {
-    title: "Banking Transaction System",
+    title: "TechBairn Website",
 
     description:
-      "A backend-focused banking transaction system designed around secure fund transfers, wallet management, transaction validation, unique transaction tracking, and ledger-based accounting logic.",
+      "A full-stack educational platform for technical training and learning resources, featuring authentication, course management, payments, and cloud deployment.",
 
-    image: "/projects/banking-transaction.png",
+    image: "/projects/techbairn.png",
 
     tags: [
+      "React.js",
+      "Tailwind CSS",
       "Node.js",
       "Express.js",
       "MongoDB",
-      "REST API",
-      "Ledger",
-      "Transactions",
+      "AWS",
+      "Razorpay",
     ],
 
-    category: "Backend Engineering",
+    category: "Full-Stack Development",
 
-    
-    github: "https://github.com/Himanshu8876/Bank-transaction",
+    link: "https://techbairn.com",
+
+    github: "https://github.com/whateverhappenshappens/tbrFrontend",
   },
 ];
 
@@ -106,7 +111,6 @@ export const Projects = () => {
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-
 
       <div className="container mx-auto px-6 relative z-10">
 
@@ -125,9 +129,9 @@ export const Projects = () => {
           </h2>
 
           <p className="text-muted-foreground leading-relaxed animate-fade-in animation-delay-200">
-            A selection of projects I've worked on across full-stack
-            development, artificial intelligence, financial technology,
-            trading systems, and backend engineering.
+            A selection of projects I've built across full-stack development,
+            artificial intelligence, financial technology, trading systems,
+            and developer-focused products.
           </p>
 
         </div>
@@ -275,41 +279,59 @@ export const Projects = () => {
               <div className="p-6 space-y-5">
 
                 {/* Title */}
-                <div className="flex items-start justify-between gap-4">
+               {/* Title */}
+<div className="flex items-start justify-between gap-4">
+  <div>
+    <p className="text-xs uppercase tracking-wider text-primary mb-2">
+      {project.category}
+    </p>
 
-                  <div>
+    {project.link !== "#" ? (
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Visit ${project.title}`}
+      >
+        <h3
+          className="
+            text-xl
+            font-semibold
+            group-hover:text-primary
+            transition-colors
+            cursor-pointer
+          "
+        >
+          {project.title}
+        </h3>
+      </a>
+    ) : (
+      <h3
+        className="
+          text-xl
+          font-semibold
+          group-hover:text-primary
+          transition-colors
+        "
+      >
+        {project.title}
+      </h3>
+    )}
+  </div>
 
-                    <p className="text-xs uppercase tracking-wider text-primary mb-2">
-                      {project.category}
-                    </p>
-
-                    <h3
-                      className="
-                        text-xl
-                        font-semibold
-                        group-hover:text-primary
-                        transition-colors
-                      "
-                    >
-                      {project.title}
-                    </h3>
-
-                  </div>
-
-                  <ArrowUpRight
-                    className="
-                      w-5
-                      h-5
-                      flex-shrink-0
-                      text-muted-foreground
-                      group-hover:text-primary
-                      group-hover:translate-x-1
-                      group-hover:-translate-y-1
-                      transition-all
-                    "
-                  />
-
-                </div>
+  <ArrowUpRight
+    className="
+      w-5
+      h-5
+      flex-shrink-0
+      text-muted-foreground
+      group-hover:text-primary
+      group-hover:translate-x-1
+      group-hover:-translate-y-1
+      transition-all
+    "
+  />
+</div>
 
 
                 {/* Description */}
@@ -363,7 +385,6 @@ export const Projects = () => {
         </div>
 
       </div>
-
     </section>
   );
 };

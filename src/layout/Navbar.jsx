@@ -6,7 +6,7 @@ const navLinks = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
-  { href: "#testimonials", label: "Testimonials" },
+  { href: "#achievements", label: "Achievements" },
 ];
 
 export const Navbar = () => {
@@ -18,33 +18,89 @@ export const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+      }
+    };
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
-        isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
-      }  z-50`}
+      className={`
+        fixed
+        top-0
+        left-0
+        right-0
+        z-50
+        transition-all
+        duration-500
+        ${
+          isScrolled
+            ? "glass-strong py-3 shadow-lg shadow-black/5"
+            : "bg-transparent py-5"
+        }
+      `}
     >
-      <nav className="container mx-auto px-6 flex items-center justify-between">
+      <nav
+        className="container mx-auto px-6 flex items-center justify-between"
+        aria-label="Main navigation"
+      >
+        {/* Logo */}
         <a
           href="#"
-          className="text-xl font-bold tracking-tight hover:text-primary"
+          aria-label="Himanshu Garg - Home"
+          className="
+            text-xl
+            font-bold
+            tracking-tight
+            transition-colors
+            hover:text-primary
+          "
         >
           HG<span className="text-primary">.</span>
         </a>
 
-        {/* Desktop Nav */}
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-1">
-          <div className="glass rounded-full px-2 py-1 flex items-center gap-1">
-            {navLinks.map((link, index) => (
+          <div
+            className="
+              glass
+              rounded-full
+              px-2
+              py-1
+              flex
+              items-center
+              gap-1
+            "
+          >
+            {navLinks.map((link) => (
               <a
                 href={link.href}
-                key={index}
-                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-surface"
+                key={link.href}
+                className="
+                  px-4
+                  py-2
+                  text-sm
+                  text-muted-foreground
+                  hover:text-foreground
+                  rounded-full
+                  hover:bg-surface
+                  transition-all
+                  duration-200
+                "
               >
                 {link.label}
               </a>
@@ -52,38 +108,89 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* CTA Button */}
+        {/* Desktop CTA */}
         <div className="hidden md:block">
-          <Button size="sm">Contact Me</Button>
+          <a href="#contact">
+            <Button size="sm">
+              Contact Me
+            </Button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-foreground cursor-pointer"
+          type="button"
+          className="
+            md:hidden
+            p-2
+            text-foreground
+            cursor-pointer
+            rounded-lg
+            hover:bg-surface
+            transition-colors
+          "
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          aria-label={
+            isMobileMenuOpen
+              ? "Close navigation menu"
+              : "Open navigation menu"
+          }
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? (
+            <X size={24} />
+          ) : (
+            <Menu size={24} />
+          )}
         </button>
       </nav>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden glass-strong animate-fade-in">
+        <div
+          id="mobile-navigation"
+          className="
+            md:hidden
+            glass-strong
+            border-t
+            border-border/40
+            animate-fade-in
+          "
+        >
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
-            {navLinks.map((link, index) => (
+
+            {navLinks.map((link) => (
               <a
                 href={link.href}
-                key={index}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg text-muted-foreground hover:text-foreground py-2"
+                key={link.href}
+                onClick={closeMobileMenu}
+                className="
+                  text-lg
+                  text-muted-foreground
+                  hover:text-foreground
+                  hover:bg-surface
+                  rounded-lg
+                  px-3
+                  py-2
+                  transition-all
+                  duration-200
+                "
               >
                 {link.label}
               </a>
             ))}
 
-            <Button onClick={() => setIsMobileMenuOpen(false)}>
-              Contact Me
-            </Button>
+            <a
+              href="#contact"
+              onClick={closeMobileMenu}
+              className="w-full"
+            >
+              <Button className="w-full">
+                Contact Me
+              </Button>
+            </a>
+
           </div>
         </div>
       )}

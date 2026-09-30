@@ -1,32 +1,41 @@
 import { Button } from "@/components/Button";
-import { ArrowRight, ChevronDown, Github, Linkedin, Download } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronDown,
+  Github,
+  Linkedin,
+  Download,
+  Code2,
+} from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
 const skills = [
   "C++",
-  "Python",
   "JavaScript",
   "TypeScript",
+  "Python",
+  "SQL",
   "React.js",
   "Node.js",
   "Express.js",
-  "MongoDB",
+  "REST APIs",
+  "GraphQL",
   "PostgreSQL",
+  "MongoDB",
   "AWS",
   "Docker",
   "Kubernetes",
   "GitHub Actions",
   "Tailwind CSS",
-  "REST APIs",
-  "GraphQL",
-  "SQL",
+  "WebSockets",
+  "JWT",
   "Google Gemini API",
 ];
 
 export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
-      
+
       {/* Subtle Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-15%] right-[-10%] w-[500px] h-[500px] rounded-full bg-primary/10 blur-[140px]" />
@@ -35,17 +44,17 @@ export const Hero = () => {
 
       {/* Main Content */}
       <div className="container mx-auto px-6 pt-28 pb-20 relative z-10">
-        
+
         <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-16 lg:gap-20 items-center">
 
           {/* LEFT */}
           <div className="space-y-8">
 
-            {/* Availability */}
+            {/* Professional Role */}
             <div className="animate-fade-in">
               <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Software Developer • Full-Stack Developer
+                Software Developer • Full-Stack & Backend
               </span>
             </div>
 
@@ -64,15 +73,18 @@ export const Hero = () => {
               </h1>
 
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl animate-fade-in animation-delay-200">
-                Hi, I'm <span className="text-foreground font-medium">Himanshu Garg</span>.
-                I'm a software developer focused on building full-stack web
-                applications, scalable backend systems, and cloud-based solutions.
+                Hi, I'm{" "}
+                <span className="text-foreground font-medium">
+                  Himanshu Garg
+                </span>
+                . I'm a software developer focused on building full-stack
+                applications, backend systems, and cloud-based solutions.
               </p>
 
               <p className="text-base text-muted-foreground/80 max-w-xl leading-relaxed animate-fade-in animation-delay-200">
-                I work primarily with React, TypeScript, Node.js and AWS, with
-                experience building applications across fintech, education,
-                analytics and AI-powered products.
+                I work primarily with React, TypeScript, Node.js, PostgreSQL,
+                MongoDB, and AWS, with experience building products across
+                fintech, financial analytics, AI, and job automation.
               </p>
 
             </div>
@@ -80,10 +92,12 @@ export const Hero = () => {
             {/* CTA */}
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
 
-              <Button size="lg">
-                Contact Me
-                <ArrowRight className="w-5 h-5" />
-              </Button>
+              <a href="#contact">
+                <Button size="lg">
+                  Contact Me
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </a>
 
               {/* DOWNLOAD CV */}
               <a
@@ -105,6 +119,7 @@ export const Hero = () => {
                 Find me on
               </span>
 
+              {/* GitHub */}
               <a
                 href="https://github.com/Himanshu8876"
                 target="_blank"
@@ -115,6 +130,7 @@ export const Hero = () => {
                 <Github className="w-5 h-5" />
               </a>
 
+              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/himanshu-garg-326021252/"
                 target="_blank"
@@ -123,6 +139,17 @@ export const Hero = () => {
                 className="p-2.5 rounded-full border border-border/50 hover:border-primary/50 hover:text-primary transition-all duration-300"
               >
                 <Linkedin className="w-5 h-5" />
+              </a>
+
+              {/* LeetCode */}
+              <a
+                href="https://leetcode.com/u/garghimanshu778/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LeetCode"
+                className="p-2.5 rounded-full border border-border/50 hover:border-primary/50 hover:text-primary transition-all duration-300"
+              >
+                <Code2 className="w-5 h-5" />
               </a>
 
             </div>
@@ -171,24 +198,40 @@ export const Hero = () => {
         {/* SKILLS */}
         <div className="mt-24 animate-fade-in animation-delay-600">
 
-          <p className="text-sm text-muted-foreground mb-6">
+          <p className="text-base font-medium text-foreground/80 mb-6 tracking-wide">
             Technologies I work with
           </p>
 
           <div className="relative overflow-hidden">
 
+            {/* Left Fade */}
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
 
+            {/* Right Fade */}
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
 
-            <div className="flex animate-marquee">
+            {/* Faster Marquee */}
+            <div
+              className="flex animate-marquee"
+              style={{ animationDuration: "18s" }}
+            >
 
               {[...skills, ...skills].map((skill, idx) => (
                 <div
                   key={idx}
                   className="flex-shrink-0 px-6 py-3"
                 >
-                  <span className="text-lg font-medium text-muted-foreground/50 hover:text-primary transition-colors">
+                  <span
+                    className="
+                      text-xl
+                      font-medium
+                      text-muted-foreground/80
+                      hover:text-primary
+                      hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.45)]
+                      transition-all
+                      duration-300
+                    "
+                  >
                     {skill}
                   </span>
                 </div>
@@ -215,7 +258,6 @@ export const Hero = () => {
           </span>
 
           <ChevronDown className="w-5 h-5 animate-bounce" />
-
         </a>
 
       </div>

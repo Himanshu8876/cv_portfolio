@@ -4,7 +4,7 @@ const experiences = [
     role: "Financial Analyst Intern",
     company: "Axxela Advisory Services LLP",
     description:
-      "Worked on derivatives and commodities trading across international markets, including Gold, Silver, and Livestock futures. Developed and executed spread-trading and arbitrage strategies using seasonality, term structure, and inter-market correlations while applying risk management and quantitative analysis.",
+      "Worked on derivatives and commodities trading across international markets, including Gold, Silver, and Livestock futures. Developed and evaluated spread-trading and arbitrage strategies using seasonality, term structure, inter-market correlations, and market structure while applying quantitative analysis and risk management to trading decisions.",
     technologies: [
       "Derivatives",
       "Commodities",
@@ -20,12 +20,14 @@ const experiences = [
     role: "Software Developer Intern",
     company: "Techbairn",
     description:
-      "Worked on multiple full-stack web development projects, contributing to design, development, deployment, and optimization. Led a cross-functional development team, provided technical guidance, and implemented CI/CD pipelines to automate deployments.",
+      "Developed and enhanced full-stack web applications using React.js, Node.js, Express.js, and MongoDB, contributing across frontend, backend APIs, database integration, and deployment. Led a cross-functional development team, coordinated technical implementation, reviewed code, and helped establish CI/CD workflows using GitHub Actions and AWS to automate and streamline deployments.",
     technologies: [
       "React.js",
       "Node.js",
+      "Express.js",
       "MongoDB",
       "AWS",
+      "REST APIs",
       "CI/CD",
       "GitHub Actions",
     ],
@@ -37,14 +39,16 @@ const experiences = [
     role: "Software Developer Intern",
     company: "Cygnus Capital",
     description:
-      "Contributed to the development of Operate, a leveraged trading platform for Indian financial markets. Worked across full-stack development and algorithmic trading systems while managing AWS infrastructure, deployments, content delivery, and the transition toward a serverless architecture.",
+      "Contributed to Operate, a leveraged trading platform for Indian financial markets, working across frontend, backend services, authentication, referral workflows, and real-time trading infrastructure. Managed AWS EC2 environments, deployments, account configuration, and content delivery, while contributing to the migration of backend workloads toward a serverless architecture using AWS Lambda.",
     technologies: [
       "React.js",
       "Node.js",
       "TypeScript",
+      "REST APIs",
+      "WebSockets",
       "AWS EC2",
       "AWS Lambda",
-      "WebSockets",
+      "DynamoDB",
     ],
     current: false,
   },
@@ -122,7 +126,6 @@ export const Experience = () => {
 
         </div>
 
-
         {/* Timeline */}
         <div className="relative">
 
@@ -144,7 +147,6 @@ export const Experience = () => {
               shadow-[0_0_20px_rgba(32,178,166,0.5)]
             "
           />
-
 
           {/* Experience Items */}
           <div className="space-y-12">
@@ -183,7 +185,6 @@ export const Experience = () => {
                   "
                 />
 
-
                 {/* Content */}
                 <div
                   className={`pl-8 md:pl-0 ${
@@ -211,18 +212,15 @@ export const Experience = () => {
                       {exp.period}
                     </span>
 
-
                     {/* Role */}
                     <h3 className="text-xl font-semibold mt-2">
                       {exp.role}
                     </h3>
 
-
                     {/* Company */}
                     <p className="text-muted-foreground">
                       {exp.company}
                     </p>
-
 
                     {/* Description */}
                     <p
@@ -235,7 +233,6 @@ export const Experience = () => {
                     >
                       {exp.description}
                     </p>
-
 
                     {/* Technologies */}
                     <div
